@@ -8,9 +8,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-# The production project already contains src/feature_engineer.py. The test
-# suite supplies a minimal contract-compatible substitute so the API contract
-# can be tested independently of the local project implementation.
+# Use a minimal mock for FeatureEngineer to test API contract
+# independently without loading the full production feature pipeline
+
 feature_engineer_module = types.ModuleType("src.feature_engineer")
 
 
