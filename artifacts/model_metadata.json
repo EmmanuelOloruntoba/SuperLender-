@@ -1,0 +1,41 @@
+{
+    "model_name": "HistGradientBoostingClassifier",
+    "model_version": "v1",
+    "target_column": "good_bad_flag",
+    "target_mapping": {
+        "Good": 1,
+        "Bad": 0
+    },
+    "risk_event": "Bad",
+    "bad_class_label": 0,
+    "decision_threshold": 0.23,
+    "selection_method": {
+        "validation_strategy": "Chronological 70/15/15",
+        "hyperparameter_selection": "4-fold expanding-window TimeSeriesSplit",
+        "selection_metric": "PR-AUC"
+    },
+    "model_parameters": {
+        "learning_rate": 0.03,
+        "max_iter": 300,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 50,
+        "l2_regularization": 5.0,
+        "class_weight": null
+    },
+    "validation_metrics": {
+        "roc_auc": 0.7198,
+        "pr_auc": 0.4021,
+        "average_precision": 0.4087,
+        "precision_bad": 0.3547,
+        "recall_bad": 0.595,
+        "f1_bad": 0.4444
+    },
+    "test_metrics": {
+        "roc_auc": 0.666,
+        "pr_auc": 0.4397,
+        "average_precision": 0.4427,
+        "precision_bad": 0.3682,
+        "recall_bad": 0.557,
+        "f1_bad": 0.4433
+    }
+}

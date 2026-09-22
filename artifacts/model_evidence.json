@@ -1,0 +1,45 @@
+{
+    "model": {
+        "name": "HistGradientBoostingClassifier",
+        "version": "v1",
+        "risk_event": "Bad",
+        "decision_threshold": 0.23
+    },
+
+    "validation": {
+        "accuracy": 0.7252,
+        "precision": 0.3547,
+        "recall": 0.5950,
+        "f1": 0.4444,
+        "roc_auc": 0.7198,
+        "pr_auc": 0.4021,
+        "confusion_matrix": [
+            [72, 49],
+            [131, 403]
+        ]
+    },
+
+    "final_holdout": {
+        "accuracy": 0.6631,
+        "precision": 0.3682,
+        "recall": 0.5570,
+        "f1": 0.4433,
+        "roc_auc": 0.6660,
+        "pr_auc": 0.4397,
+        "confusion_matrix": [
+            [88, 70],
+            [151, 347]
+        ]
+    },
+
+    "calibration": {
+        "brier_score": 0.135322,
+        "production_model_retained": true,
+        "note": "Sigmoid and isotonic calibration variants were tested after model selection. The uncalibrated model was retained because the tested variants did not improve validation Brier score and reduced validation ranking performance."
+    },
+
+    "threshold_analysis": {
+        "selection_context": "The production threshold was selected from validation analysis and frozen before final holdout evaluation.",
+        "production_threshold": 0.23
+    }
+}
