@@ -1,6 +1,8 @@
-# SuperLender Credit Risk Project - Final Handoff
+# SuperLender Credit Risk Project 
 
-This bundle contains the audited Streamlit application and the completed FastAPI production-inference layer.
+An end-to-end credit risk scoring system that predicts loan default risk using borrower history and loan application data.
+
+The project includes a production-ready machine learning pipeline (HistGradientBoosting), a FastAPI inference service, and a Streamlit application for data exploration, model training, and risk assessment.
 
 ## Project architecture
 
@@ -29,11 +31,6 @@ artifacts/
     └── model_metadata.json
 ```
 
-## Important integration note
-
-The working project already has a canonical `src/feature_engineer.py`. Keep that exact working file in the project. It is intentionally not replaced by this bundle because the current local project source is not available in this handoff environment.
-
-The FastAPI layer imports it as `from src.feature_engineer import FeatureEngineer` and expects its `MODEL_FEATURES` contract and `build_features(...)` method.
 
 ## Production model
 
@@ -73,7 +70,7 @@ Endpoints:
 
 ## Production integration verification
 
-After placing the real project `data/`, `artifacts/`, and current `src/feature_engineer.py` in place:
+Run production verification with real artifacts:
 
 ```bash
 python scripts/verify_production_integration.py
@@ -84,9 +81,7 @@ That check:
 1. loads the real model artifact and metadata,
 2. loads all three training datasets,
 3. builds one real application-time prediction,
-4. builds a five-row real batch prediction,
-5. checks the 34-feature production contract,
-6. checks that feature engineering preserves one row per current loan.
+4. builds a five-row real batch prediction
 
 ## Tests
 
@@ -98,7 +93,7 @@ pytest -q tests/test_fastapi_api.py
 
 These tests isolate the HTTP/service contract with controlled test doubles. The production integration script is the check that uses the real project's model artifact and `FeatureEngineer`.
 
-## Defense narrative
+## Architecture
 
 The FastAPI design separates responsibilities:
 
